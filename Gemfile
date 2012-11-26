@@ -10,13 +10,22 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
 gem 'haml'
-gem 'dm-sqlite-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
 gem 'dm-constraints'
 gem 'dm-aggregates'
 gem 'dm-core'
+
+group :production do
+ gem 'pg'
+ gem 'dm-postgres-adapter'
+end
+
+group :development do
+ gem 'sqlite'
+ gem 'dm-sqlite-adapter'
+end
 
 # Test requirements
 
