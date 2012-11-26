@@ -14,6 +14,6 @@ DataMapper::Property::String.length(255)
 
 case Padrino.env
   when :development then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "ptc_development.db"))
-  when :production  then DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_GREEN_URL'])
+  when :production  then DataMapper.setup(:default, URI.parse(ENV['DATABASE_URL'] || ''))
   when :test        then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "ptc_test.db"))
 end
