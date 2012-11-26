@@ -23,7 +23,6 @@ group :production do
 end
 
 group :development do
- gem 'sqlite'
  gem 'dm-sqlite-adapter'
 end
 
