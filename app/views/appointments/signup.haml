@@ -1,0 +1,23 @@
+%h1 Appointment Registration
+%h2= @slot.name
+
+- form_for :appointment, "/appointments/signup", :id => 'create_appointment' do |f|
+  = f.error_messages
+  = f.hidden_field :slot_id, :value => params[:id]
+  %p
+    = f.label :student, :caption => "Student Name"
+    = f.text_field :student
+  %p
+    = f.label :student, :caption => "Parent Name"
+    = f.text_field :parent
+  %p
+    = f.label :student, :caption => "Parent Email"
+    = f.email_field :email
+  %p
+    = f.label :grade, caption: "Grade"
+    = f.select :grade, :options => 6.upto(12).to_a
+  %p
+    = f.label :homeroom, caption: "Homeroom"
+    = f.select :homeroom, :options => [601, 602, 603, 604, 605, 606, 607, 608, 701, 702, 703, 704, 705, 706, 707, 708, 801, 802, 803, 804, 805, 806, 901, 902, 903, 904, 101, 102, 103, 104, 111, 112, 113, 114, 121, 122, 123]
+  %p
+    = f.submit "Submit", class: 'btn btn-primary'

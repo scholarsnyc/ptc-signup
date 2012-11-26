@@ -1,0 +1,5 @@
+%h1 Available Appointments
+
+%ul
+  - @slots.each do |slot|
+    %li= link_to slot.name, url_for(:appointments, :signup, :id => slot.id)
