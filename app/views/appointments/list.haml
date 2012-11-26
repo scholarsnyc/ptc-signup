@@ -1,5 +1,19 @@
 %h1 Available Appointments
 
-%ul
+%p Click on the time slot to make a reservation.
+
+%table.table.tablesorter{id: "appointment-list"}
+  %thead
+    %tr
+      %th Grade
+      %th Cohort
+      %th Day and Time
+      %th Appointments Remaining
+  %tbody
   - @slots.each do |slot|
-    %li= link_to slot.name, url_for(:appointments, :signup, :id => slot.id)
+    - if slot.remaining > 0
+      %tr
+        %td= slot.grade
+        %td= slot.cohort
+        %td= link_to slot.name, url_for(:appointments, :signup, :id => slot.id)
+        %td= slot.remaining

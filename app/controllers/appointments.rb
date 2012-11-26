@@ -1,7 +1,7 @@
 Ptc.controllers :appointments do
   
   get :index do
-    @slots = Slot.all
+    @slots = Slot.all(:order => [:grade.asc])
     render 'appointments/list'
   end
   

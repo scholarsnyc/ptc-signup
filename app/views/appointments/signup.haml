@@ -1,7 +1,7 @@
 %h1 Appointment Registration
 %h2= @slot.name
 
-- form_for :appointment, "/appointments/signup", :id => 'create_appointment' do |f|
+- form_for :appointment, "/appointments/signup", :id => 'create_appointment', :name => 'create_appointment' do |f|
   = f.error_messages
   = f.hidden_field :slot_id, :value => params[:id]
   %p
