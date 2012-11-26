@@ -2,7 +2,7 @@
 
 %p Click on the time slot to make a reservation.
 
-%table.table.tablesorter{id: "appointment-list"}
+%table.tablesorter.table{id: "appointment-list"}
   %thead
     %tr
       %th Grade
@@ -11,9 +11,11 @@
       %th Appointments Remaining
   %tbody
   - @slots.each do |slot|
-    - if slot.remaining > 0
-      %tr
-        %td= slot.grade
-        %td= slot.cohort
+    %tr
+      %td= slot.grade
+      %td= slot.cohort
+      - if slot.remaining > 0
         %td= link_to slot.name, url_for(:appointments, :signup, :id => slot.id)
-        %td= slot.remaining
+      - else
+        %td.error= "#{slot.name} (Full)"
+      %td= slot.remaining

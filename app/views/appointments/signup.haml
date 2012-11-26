@@ -1,23 +1,24 @@
 %h1 Appointment Registration
 %h2= @slot.name
+%p.lead= "Grade #{@slot.grade}#{@slot.cohort}"
 
 - form_for :appointment, "/appointments/signup", :id => 'create_appointment', :name => 'create_appointment' do |f|
   = f.error_messages
   = f.hidden_field :slot_id, :value => params[:id]
   %p
     = f.label :student, :caption => "Student Name"
-    = f.text_field :student
+    = f.text_field :student, :placeholder => "Student Name"
   %p
     = f.label :student, :caption => "Parent Name"
-    = f.text_field :parent
+    = f.text_field :parent, :placeholder => "Parent Name"
   %p
     = f.label :student, :caption => "Parent Email"
-    = f.email_field :email
+    = f.email_field :email, :placeholder => "Parent Email"
   %p
     = f.label :grade, caption: "Grade"
-    = f.select :grade, :options => 6.upto(12).to_a
+    = f.select :grade, :options => [@slot.grade]
   %p
     = f.label :homeroom, caption: "Homeroom"
-    = f.select :homeroom, :options => [601, 602, 603, 604, 605, 606, 607, 608, 701, 702, 703, 704, 705, 706, 707, 708, 801, 802, 803, 804, 805, 806, 901, 902, 903, 904, 101, 102, 103, 104, 111, 112, 113, 114, 121, 122, 123]
+    = f.select :homeroom, :options => { 6 => [601, 602, 603, 604, 605, 606, 607, 608], 7 => [701, 702, 703, 704, 705, 706, 707, 708], 8 => [801, 802, 803, 804, 805, 806], 9 => [901, 902, 903, 904], 10 => [101, 102, 103, 104], 11 => [111, 112, 113, 114], 12 => [121, 122, 123] }[@slot.grade]
   %p
     = f.submit "Submit", class: 'btn btn-primary'
